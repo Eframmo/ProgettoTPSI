@@ -16,4 +16,8 @@ public class MeetingRoom extends Stanza{
             throw new StanzaOccupataException("Stanza Occupata");
         }
     }
+
+    public int getMaxPersone() {
+        return maxPersone;
+    }
 }
