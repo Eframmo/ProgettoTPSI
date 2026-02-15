@@ -2,17 +2,17 @@ import java.util.ArrayList;
 
 public class GestorePrenotazioni {
 
-    private ArrayList<Stanza> stanze;
+    private static ArrayList<Stanza> stanze = new ArrayList<>();
 
     public GestorePrenotazioni() {
         this.stanze = new ArrayList<>();
     }
 
-    public void addStanza(Stanza stanza){
+    public static void addStanza(Stanza stanza){
         stanze.add(stanza);
     }
 
-    public void prenota(String nomeCliente, int numeroPersone, String tipologia, int ore) throws StanzaOccupataException, OverBookingException {
+    public static void prenota(String nomeCliente, int numeroPersone, String tipologia, int ore) throws StanzaOccupataException, OverBookingException {
         if (nomeCliente == null){
             throw new IllegalArgumentException("Nome non valido");
         }
@@ -35,5 +35,9 @@ public class GestorePrenotazioni {
                 throw new IllegalArgumentException("Stanza non riconosciuta");
             }
         }
+    }
+
+    public static void setStanze(ArrayList<Stanza> stanze) {
+        GestorePrenotazioni.stanze = stanze;
     }
 }
