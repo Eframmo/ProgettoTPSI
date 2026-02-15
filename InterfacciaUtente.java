@@ -19,4 +19,8 @@ public class InterfacciaUtente {
             log.add(e.getMessage());
         }
     }
+
+    public ArrayList<String> getLog() {
+        return log;
+    }
 }

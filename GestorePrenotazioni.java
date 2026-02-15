@@ -4,6 +4,10 @@ public class GestorePrenotazioni {
 
     private ArrayList<Stanza> stanze;
 
+    public GestorePrenotazioni() {
+        this.stanze = new ArrayList<>();
+    }
+
     public void addStanza(Stanza stanza){
         stanze.add(stanza);
     }
@@ -27,7 +31,7 @@ public class GestorePrenotazioni {
             }else if (tipologia.equals("Private Office") && stanze.get(i) instanceof PrivateOffice){
                 stanze.get(i).assegna();
                 break;
-            }else {
+            }else if (i == 2){
                 throw new IllegalArgumentException("Stanza non riconosciuta");
             }
         }
