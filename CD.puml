@@ -53,6 +53,6 @@ GestorePrenotazioni "1" --> "0..*" Stanza
 
 Stanza "throws" ..> StanzaOccupataException
 MeetingRoom "throws" ..> OverBookingException
-Stanza "throws" ..> IllegalArgumentExceptio
+GestorePrenotazioni "throws" ..> IllegalArgumentExceptio
 
 @enduml

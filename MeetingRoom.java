@@ -1,11 +1,23 @@
 public class MeetingRoom extends Stanza{
 
-    public MeetingRoom(String tipologia, double prezzo) {
+    private int maxPersone;
+
+    public MeetingRoom(String tipologia, double prezzo, int maxPersone) {
         super(tipologia, prezzo);
+        this.maxPersone = maxPersone;
     }
 
     @Override
-    public boolean assegna() throws IllegalArgumentException, StanzaOccupataException {
-        return true;
+    public boolean assegna() throws StanzaOccupataException {
+        if (this.isDisponibile()){
+            this.setDisponibile(false);
+            return true;
+        }else {
+            throw new StanzaOccupataException("Stanza Occupata");
+        }
+    }
+
+    public int getMaxPersone() {
+        return maxPersone;
     }
 }
