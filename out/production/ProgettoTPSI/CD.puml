@@ -1,0 +1,58 @@
+@startuml
+
+abstract class Stanza{
+    -tipologia: String
+    -prezzo: double
+    -diponibile: boolean
+
+    + {abstract} assegna(): boolean
+}
+
+class Desk{
+    +assegna(): boolean
+}
+
+class PrivateOffice{
+    +assegna(): boolean
+}
+
+class MeetingRoom{
+    -maxPersone: int
+    +assegna(): boolean
+}
+
+class IllegalArgumentExceptio{}
+class Exception{}
+class StanzaOccupataException{}
+class OverBookingException{}
+
+StanzaOccupataException --|> Exception
+OverBookingException --|> Exception
+
+Desk --|> Stanza
+PrivateOffice --|> Stanza
+MeetingRoom --|> Stanza
+
+class GestorePrenotazioni{
+    -stanze: ArrayList<Stanza>
+
+    +addStanza(stanza: Stanza): void
+    +prenota(nomeCliente: String, numeroPersone: int, tipologia: String, ore: int): void
+}
+
+class InterfacciaUtente{
+    -gestorePrenotazioni: GestorePrenotazioni
+    -log: ArrayList<String>
+
+    +richiestaPrenotazione(nome: String, numeroPersone: int, tipologia: String, ore: int)
+}
+
+InterfacciaUtente "1" --> "1" GestorePrenotazioni
+
+GestorePrenotazioni "1" --> "0..*" Stanza
+
+Stanza "throws" ..> StanzaOccupataException
+MeetingRoom "throws" ..> OverBookingException
+GestorePrenotazioni "throws" ..> IllegalArgumentExceptio
+
+@enduml
