@@ -5,7 +5,12 @@ public class PrivateOffice extends Stanza{
     }
 
     @Override
-    public boolean assegna() throws IllegalArgumentException, StanzaOccupataException {
-        return true;
+    public boolean assegna() throws StanzaOccupataException {
+        if (isDisponibile()){
+            setDisponibile(false);
+            return true;
+        }else {
+            throw new StanzaOccupataException("Stanza Occupata");
+        }
     }
 }

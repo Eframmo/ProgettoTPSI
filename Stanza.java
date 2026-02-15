@@ -10,7 +10,7 @@ public abstract class Stanza {
         this.disponibile = true;
     }
 
-    public abstract boolean assegna() throws IllegalArgumentException, StanzaOccupataException;
+    public abstract boolean assegna() throws StanzaOccupataException;
 
     public String getTipologia() {
         return tipologia;
